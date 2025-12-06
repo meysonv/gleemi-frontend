@@ -1,6 +1,9 @@
 // URL base de tu backend Laravel
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
+// URL base sin /api/v1 para servir archivos estáticos
+const BASE_URL = API_URL.replace('/api/v1', '')
+
 /**
  * Obtener URL completa de una imagen en storage
  * @param {string} path - Ruta relativa de la imagen (ej: "servicios/abc123.jpg")
@@ -14,7 +17,7 @@ export function getStorageUrl(path) {
     return path
   }
 
-  return `${API_URL}/storage/${path}`
+  return `${BASE_URL}/storage/${path}`
 }
 
 /**
